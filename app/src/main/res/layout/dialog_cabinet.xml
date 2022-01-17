@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/radius_white"
+    android:padding="@dimen/size_15dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/size_1dp">
+        <LinearLayout
+            android:id="@+id/heat_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:showDividers="middle"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/size_10dp"
+            >
+
+        <LinearLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/xian_blue_4dp"
+            android:padding="@dimen/size_10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="加热时长"
+                android:textSize="@dimen/size_12dp"
+                />
+
+            <com.youwu.tool.utils_view.TimeSelectView
+                android:id="@+id/time_select"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/xian_blue_4dp"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:visibility="gone"
+                >
+            <com.youwu.tool.utils_view.TimeSelectView
+                android:id="@+id/time_select_two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                />
+            <com.youwu.tool.utils_view.DegreeSelectView
+                android:id="@+id/degree_select_two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/xian_blue_4dp"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:padding="@dimen/size_10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="加热温度"
+                android:textSize="@dimen/size_12dp"
+                />
+
+
+            <com.youwu.tool.utils_view.DegreeSelectView
+                android:id="@+id/degree_select"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="柜子加热"
+                android:textSize="@dimen/size_16dp"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                />
+            <com.xuexiang.xui.widget.button.switchbutton.SwitchButton
+                android:id="@+id/cabinet_jr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                app:swb_animationDuration="300"
+                app:swb_backDrawable="@drawable/ios_back_drawable"
+                app:swb_thumbDrawable="@drawable/ios_thumb_selector"
+                app:swb_thumbMarginBottom="-8dp"
+                app:swb_thumbMarginLeft="-5dp"
+                app:swb_thumbMarginRight="-5dp"
+                app:swb_thumbMarginTop="-2.5dp"
+                app:swb_thumbRangeRatio="1.4"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/size_10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="紫光灯"
+                android:textSize="@dimen/size_16dp"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                />
+            <com.xuexiang.xui.widget.button.switchbutton.SwitchButton
+                android:id="@+id/cabinet_zgd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                app:swb_animationDuration="300"
+                app:swb_backDrawable="@drawable/ios_back_drawable"
+                app:swb_thumbDrawable="@drawable/ios_thumb_selector"
+                app:swb_thumbMarginBottom="-8dp"
+                app:swb_thumbMarginLeft="-5dp"
+                app:swb_thumbMarginRight="-5dp"
+                app:swb_thumbMarginTop="-2.5dp"
+                app:swb_thumbRangeRatio="1.4"
+                />
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+            android:id="@+id/restart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="重启"
+            android:textSize="@dimen/size_16dp"
+            android:layout_marginTop="@dimen/size_30dp"
+            android:textColor="@color/md_white_1000"
+            android:background="@drawable/radius_10dp"
+
+            android:layout_weight="1"
+            />
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+            android:id="@+id/determine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:textSize="@dimen/size_16dp"
+            android:layout_marginTop="@dimen/size_30dp"
+            android:textColor="@color/md_white_1000"
+            android:background="@drawable/radius_10dp"
+            android:layout_marginLeft="@dimen/size_10dp"
+            android:layout_marginRight="@dimen/size_10dp"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

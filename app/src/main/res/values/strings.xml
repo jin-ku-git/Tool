@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">有物工具包</string>
+
+    <!-- 拍照上传 -->
+    <string name="pick_photo">选择图片</string>
+    <string name="pick_video">选择视频</string>
+    <string name="pick_photo_gif">选择gif图片</string>
+    <string name="pick_photo_without_camera">选择图片（不带拍照按钮且点击不预览图片）</string>
+    <string name="pick_one_photo">选择单张图片</string>
+    <string name="multiple_pick_photo">多次进入PhotoPicker选择图片</string>
+
+    <!-- 打印设备 -->
+    <string name="connected_device">已连接设备</string>
+    <string name="connected_otherdevice">其他设备</string>
+    <string name="scan_device_none">未搜索到设备！请到手机蓝牙系统界面连接好可用的蓝牙设备</string>
+    <string name="disconnectdevice">断开已连接设备</string>
+    <string name="senddata">打印小票</string>
+    <string name="toast_connect_tip">请先连接设备</string>
+    <string name="just_connect_onedevice">只能连接一个设备</string>
+    <string name="open">打开</string>
+    <string name="cancel">取消</string>
+    <string name="open_ble">是否打开蓝牙？</string>
+    <string name="stop_scan">搜索结束</string>
+    <string name="connectdevice_title">连接设备</string>
+    <string name="permissions_read">APP需要读手机存储权限</string>
+    <string name="permissions_write">APP需要写手机存储权限</string>
+    <string name="permissions_gps">APP需要GPS权限和地理位置权限</string>
+    <string name="permissions_setting">请前往设置界面打开权限</string>
+
+
+    <string name="huanhang">"\r\n"</string>
+</resources>

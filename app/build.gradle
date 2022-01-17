@@ -1,0 +1,188 @@
+import groovy.xml.QName
+
+apply plugin: 'com.android.application'
+
+Properties configProperties = new Properties()
+def projectInputStream
+try {
+    def configFile = project.rootProject.file('setting/project.properties')
+    if (configFile != null && configFile.exists()) {
+        projectInputStream = new InputStreamReader(configFile.newDataInputStream(), "utf-8")
+        configProperties.load(projectInputStream)
+    }
+} catch (Exception ignored) {
+} finally {
+    projectInputStream.close()
+}
+
+android {
+    def buildTypeStr = "Release"
+//    def buildTypeStr = "Debug"
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        multiDexEnabled true
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86_64","x86"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        /**
+         * 设置你的keystore相关
+         * demo中只是一个示例，使用时请根据实际情况进行配置
+         */
+        debug {
+            keyAlias 'youwu'
+            keyPassword 'youwu2021'
+            storeFile file('../youwu.jks')
+            storePassword 'youwu2021'
+        }
+        release {
+            keyAlias 'youwu'
+            keyPassword 'youwu2021'
+            storeFile file('../youwu.jks')
+            storePassword 'youwu2021'
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    applicationVariants.all {
+        //判断是release还是debug版本
+        def buildType = it.buildType.name
+        def apkName = configProperties.getProperty("strings.appName") as String
+        def fileName
+        File apkFile
+//                def channel = it.productFlavors[0].name.split("-")[0]
+        def createTime = new Date().format("YYYYMMddHHmmss", TimeZone.getTimeZone("GMT+08:00"))
+        //只对Release包起作用，如果不是Release包则不变更输出路径，否则可能导致AS无法自动安装debug包。
+        if (buildType == "release") {
+            apkFile = new File(project.rootDir.getParent() + "/apks/${apkName}")
+            it.getPackageApplicationProvider().get().outputDirectory = apkFile
+        }
+
+        it.outputs.each {
+
+                fileName = "${apkName}_v${defaultConfig.versionName}-${createTime}-${buildTypeStr}-${defaultConfig.versionCode}.apk"
+                //重新对apk命名。(适用于Gradle4.0以下版本)
+//                it.outputFile = new File(it.outputFile.parent, fileName)
+                //重新对apk命名。(适用于Gradle4.0（含）以上版本)如果你Gradle版本是4.0以下版本则将上面的一行代码放开并注释下面的这一行。
+                it.outputFileName = fileName
+
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //support
+    implementation rootProject.ext.support["design"]
+    //下拉刷新,上拉加载
+    implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
+    //底部tabBar
+    implementation('me.majiajie:pager-bottom-tab-strip:2.2.5') {
+        exclude group: 'com.android.support'
+    }
+    //MVVMHabit
+    implementation project(':mvvmhabit')
+    implementation project(path: ':wheelview')
+    implementation project(path: ':pickerview')
+    implementation project(path: ':update')
+    implementation project(path: ':shapeloading')
+    implementation project(path: ':baselibrary')
+
+    implementation files('src/libs/CXCommSdk.jar')
+
+//    implementation rootProject.ext.dependencies.MVVMHabit
+    //内存泄漏测试
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
+    //下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    //1.0.5及以前版本的老用户升级需谨慎，API改动过大
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
+
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    implementation 'com.blankj:utilcodex:1.29.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //XUI框架
+    implementation 'com.github.xuexiangjys:XUI:1.1.8'
+    //提示弹窗
+    implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    implementation 'com.github.mamumu:mmDialog:1.2.0'
+    //侧滑返回
+    implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
+    //弹窗
+    implementation 'com.lxj:xpopup:2.0.2'
+    //XQRCode二维码扫描
+    implementation 'com.github.xuexiangjys:XQRCode:1.1.0'
+    implementation 'com.blankj:utilcodex:1.29.0'
+    //阿里JSON
+    implementation 'com.alibaba:fastjson:1.2.75'
+
+    implementation 'com.tencent.map.geolocation:TencentLocationSdk-openplatform:7.3.9'
+
+    /*PictureSelector*/
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.9'
+    /* 折线图和柱状图 */
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+    //扫描二维码
+    implementation 'com.google.zxing:core:3.3.0'
+    // Permission
+    implementation 'com.guolindev.permissionx:permissionx:1.5.1'
+    implementation 'com.github.tbruyelle:rxpermissions:0.12'
+    //XQRCode二维码扫描
+    implementation 'com.github.xuexiangjys:XQRCode:1.1.0'
+    implementation 'com.blankj:utilcodex:1.29.0'
+    //EventBus
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+    api 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+
+}
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd")
+}

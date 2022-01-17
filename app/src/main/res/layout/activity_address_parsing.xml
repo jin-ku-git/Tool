@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout >
+
+    <data>
+
+        <import type="com.youwu.tool.ui.address.AddressParsingViewModel" />
+
+        <variable
+            name="viewModel"
+            type="AddressParsingViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45dp"
+            android:background="@drawable/bg_white_bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/fanhui_img_30dp"
+                android:layout_height="@dimen/fanhui_img_30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:padding="@dimen/size_3dp"
+                android:src="@mipmap/fanhui"
+                binding:onClickCommand="@{viewModel.finishOnClick}"
+            />
+
+            <TextView
+                android:id="@+id/text_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="地址解析/逆解析"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/size_16dp" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0_5dp"
+            android:background="@color/md_grey_200"
+            android:layout_below="@+id/top_layout"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_below="@+id/top_layout"
+            android:padding="@dimen/size_15dp"
+            android:layout_marginTop="@dimen/size_1dp"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45dp"
+                android:background="@drawable/radius_10dp"
+                android:hint="请输入解析地址"
+                android:text="@={viewModel.editText}"
+                android:textColor="@color/md_white_1000"
+                android:textColorHint="@color/md_white_1000"
+                android:paddingLeft="@dimen/size_10dp"
+                android:theme="@style/MyEditText"
+                android:textSize="16sp" />
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/radius_10dp"
+                android:gravity="center"
+                android:text="地图解析"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginTop="@dimen/size_15dp"
+                binding:onClickCommand="@{viewModel.parsingOnClick}"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/size_15dp"
+                >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_45dp"
+                    android:background="@drawable/radius_10dp"
+                    android:hint="请输入纬度(latitude)"
+                    android:text="@={viewModel.latitude_text}"
+                    android:textColor="@color/md_white_1000"
+                    android:textColorHint="@color/md_white_1000"
+                    android:paddingLeft="@dimen/size_10dp"
+                    android:theme="@style/MyEditText"
+                    android:layout_weight="1"
+                    android:layout_marginRight="@dimen/size_5dp"
+                    android:textSize="16sp" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_45dp"
+                    android:background="@drawable/radius_10dp"
+                    android:hint="请输入经度(longitude)"
+                    android:text="@={viewModel.longitude_text}"
+                    android:textColor="@color/md_white_1000"
+                    android:textColorHint="@color/md_white_1000"
+                    android:paddingLeft="@dimen/size_10dp"
+                    android:theme="@style/MyEditText"
+                    android:layout_marginLeft="@dimen/size_5dp"
+                    android:layout_weight="1"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/radius_10dp"
+                android:gravity="center"
+                android:text="经纬度解析"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginTop="@dimen/size_15dp"
+                binding:onClickCommand="@{viewModel.parsingTwoOnClick}"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    >
+                    <TextView
+                        android:id="@+id/Latitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.Latitude}"
+                        android:textColor="@color/md_black_1000"
+                        android:textSize="16dp"
+                        />
+                    <TextView
+                        android:id="@+id/Longitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.Longitude}"
+                        android:textColor="@color/md_black_1000"
+                        android:textSize="16dp"
+                        />
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.address}"
+                        android:textColor="@color/md_black_1000"
+                        android:textSize="16dp"
+                        />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

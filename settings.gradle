@@ -1,0 +1,6 @@
+include ':baselibrary'
+include ':shapeloading'
+include ':update'
+include ':pickerview'
+include ':wheelview'
+include ':app', ':mvvmhabit'

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout >
+
+    <data>
+
+        <import type="com.youwu.tool.ui.chart.ChartViewModel" />
+
+        <variable
+            name="viewModel"
+            type="ChartViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45dp"
+            android:background="@drawable/bg_white_bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/fanhui_img_30dp"
+                android:layout_height="@dimen/fanhui_img_30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:padding="@dimen/size_3dp"
+                android:src="@mipmap/fanhui"
+                binding:onClickCommand="@{viewModel.finishOnClick}"
+            />
+
+            <TextView
+                android:id="@+id/text_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="折线图/柱状图"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/size_16dp" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0_5dp"
+            android:background="@color/md_grey_200"
+            android:layout_below="@+id/top_layout"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_below="@+id/top_layout"
+            android:padding="@dimen/size_15dp"
+            android:layout_marginTop="@dimen/size_1dp"
+            >
+            <LinearLayout
+                android:id="@+id/cl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="vertical">
+                <RadioGroup
+                    android:id="@+id/rg_selector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/rb_one"
+                        android:layout_width="68dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="13dp"
+                        android:background="#999333"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="近7天"
+                        android:textColor="#343434"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_two"
+                        android:layout_width="68dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="#555999"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="近30天"
+                        android:textColor="#343434"
+                        android:textSize="12sp" />
+                </RadioGroup>
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/line"
+                    android:layout_width="315dp"
+                    android:layout_height="148dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rg_selector" />
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
+                    android:layout_width="315dp"
+                    android:layout_height="148dp"
+                    android:layout_marginTop="26dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line" />
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

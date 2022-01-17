@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.youwu.tool.ui.fragment.OneViewModel" />
+
+        <variable
+            name="viewModel"
+            type="OneViewModel" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/md_grey_200"
+        >
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45dp"
+            android:background="@drawable/bg_white_bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="功能列表"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/size_16dp" />
+        </RelativeLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/size_10dp"
+            >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+        <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+            android:id="@+id/button_1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+
+            android:text="增加/更新云柜"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textColor="@color/md_white_1000"
+            android:background="@drawable/radius_10dp"
+            app:sb_radius="10dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            binding:onClickCommand="@{viewModel.add_updateOnClick}"
+
+            />
+        <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+            android:id="@+id/button_2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="打印小票"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textColor="@color/md_white_1000"
+            android:background="@drawable/radius_10dp"
+            app:sb_radius="10dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            binding:onClickCommand="@{viewModel.PrintOnClick}"
+            />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+            <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                android:id="@+id/button_3"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="拍照上传"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:textColor="@color/md_white_1000"
+                android:background="@drawable/radius_10dp"
+                app:sb_radius="10dp"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                binding:onClickCommand="@{viewModel.imageonClick}"
+                />
+            <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                android:id="@+id/button_4"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="折线图/柱状图"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:textColor="@color/md_white_1000"
+                android:background="@drawable/radius_10dp"
+                app:sb_radius="10dp"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                binding:onClickCommand="@{viewModel.chartonClick}"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+            <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                android:id="@+id/button_5"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="提交位置信息"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:textColor="@color/md_white_1000"
+                android:background="@drawable/radius_10dp"
+                app:sb_radius="10dp"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                binding:onClickCommand="@{viewModel.locationClick}"
+                />
+            <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                android:id="@+id/button_6"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="地址解析"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:textColor="@color/md_white_1000"
+                android:background="@drawable/radius_10dp"
+                app:sb_radius="10dp"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                binding:onClickCommand="@{viewModel.addressParsingonClick}"
+                />
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                >
+                <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                    android:id="@+id/button_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="button_7"
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="@color/md_white_1000"
+                    android:background="@drawable/radius_10dp"
+                    app:sb_radius="10dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    />
+                <com.xuexiang.xui.widget.button.shadowbutton.ShadowButton
+                    android:id="@+id/button_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:text="button_8"
+                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:textColor="@color/md_white_1000"
+                    android:background="@drawable/radius_10dp"
+                    app:sb_radius="10dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

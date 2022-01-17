@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.youwu.tool.ui.camera.CameraChoiceViewModel" />
+
+        <variable
+            name="viewModel"
+            type="com.youwu.tool.ui.camera.CameraChoiceViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/xui_config_color_white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45dp"
+            android:background="@drawable/bg_white_bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/fanhui_img_30dp"
+                android:layout_height="@dimen/fanhui_img_30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:padding="@dimen/size_3dp"
+                android:src="@mipmap/fanhui"
+                binding:onClickCommand="@{viewModel.finishOnClick}" />
+
+            <TextView
+                android:id="@+id/text_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="选择图片"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/size_16dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/top_layout"
+            android:gravity="center"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_0_5dp"
+                android:background="@color/md_grey_200"
+                android:layout_below="@+id/top_layout"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/radius_10dp"
+                    android:gravity="center"
+                    android:text="@string/pick_photo"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginRight="@dimen/size_15dp"
+                    binding:onClickCommand="@{viewModel.choiceOnClick}"
+                    />
+
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                    android:id="@+id/button_photo_gif"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="@dimen/size_15dp"
+                    android:layout_marginRight="@dimen/size_15dp"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/radius_10dp"
+                    android:gravity="center"
+                    android:text="拍照"
+                    android:textColor="@color/white"
+                    binding:onClickCommand="@{viewModel.photographOnClick}"
+                    android:textSize="16sp" />
+
+                <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="@dimen/size_15dp"
+                    android:layout_marginTop="10dip"
+                    android:background="@drawable/radius_10dp"
+                    android:gravity="center"
+                    android:text="选择视频"
+                    android:textColor="@color/white"
+                    binding:onClickCommand="@{viewModel.choiceVideoOnClick}"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:overScrollMode="never" />
+        </LinearLayout>
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+            android:id="@+id/button_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/radius_10dp"
+            android:gravity="center"
+            android:text="上传"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/size_30dp"
+            android:layout_marginEnd="@dimen/size_30dp"
+            android:layout_marginBottom="@dimen/img_20dp"
+            binding:onClickCommand="@{viewModel.uploadOnClick}"
+            />
+    </RelativeLayout>
+</layout>

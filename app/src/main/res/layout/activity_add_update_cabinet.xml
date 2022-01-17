@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.youwu.tool.ui.cabinet.AddUpdateCabinetViewModel" />
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="AddUpdateCabinetViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45dp"
+            android:background="@drawable/bg_white_bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/fanhui_img_30dp"
+                android:layout_height="@dimen/fanhui_img_30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:padding="@dimen/size_3dp"
+                android:src="@mipmap/fanhui"
+                binding:onClickCommand="@{viewModel.finishOnClick}"
+            />
+
+            <TextView
+                android:id="@+id/text_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="增加/更新取餐柜"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/size_20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/text_right"
+                android:background="@drawable/radius_blue"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="控温"
+                android:textColor="@color/white"
+                android:layout_marginRight="@dimen/size_5dp"
+                android:textSize="@dimen/size_16dp"
+                binding:onClickCommand="@{viewModel.TimeJudgeOnClick}"/>
+
+            <TextView
+                android:id="@+id/text_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/radius_blue"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="新增"
+                android:textColor="@color/white"
+                android:layout_marginRight="@dimen/size_10dp"
+                android:textSize="@dimen/size_16dp"
+                binding:onClickCommand="@{viewModel.addOnClick}"/>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0_5dp"
+            android:background="@color/md_grey_200"
+            android:layout_below="@+id/top_layout"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/top_layout"
+            android:layout_above="@+id/bottom_layout"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rec_left"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/divider" />
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rec_right"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <LinearLayout
+                        android:id="@+id/top_store_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/divider"
+
+                        >
+                        <ImageView
+                            android:id="@+id/store_unchecked_img"
+                            android:layout_width="@dimen/size_20dp"
+                            android:layout_height="@dimen/size_20dp"
+                            android:src="@{viewModel.currentSelect==1?@drawable/checked_iv:@drawable/unchecked_iv}"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:visibility="@{viewModel.time_judge?View.VISIBLE:View.GONE}"
+                            />
+                        <TextView
+                            android:id="@+id/right_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/size_10dp"
+                            android:paddingLeft="@dimen/size_10dp"
+                            android:paddingRight="@dimen/size_10dp"
+                            android:paddingTop="@dimen/size_10dp"
+                            android:singleLine="true"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_16sp" />
+
+                    </LinearLayout>
+
+
+                </FrameLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45dp"
+            android:layout_alignParentBottom="true"
+            android:visibility="@{viewModel.time_judge?View.VISIBLE:View.GONE}"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_0_5dp"
+                android:background="@color/md_grey_300"
+                />
+            <RelativeLayout
+                android:id="@+id/all_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                binding:onClickCommand="@{viewModel.allOnClick}"
+                >
+            <ImageView
+                android:id="@+id/all_img"
+                android:layout_width="@dimen/size_20dp"
+                android:layout_height="@dimen/size_20dp"
+                android:src="@{viewModel.all_field?@drawable/checked_iv:@drawable/unchecked_iv}"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全选"
+                android:textSize="@dimen/size_16dp"
+                android:layout_toRightOf="@+id/all_img"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_10dp"
+                />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/text_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/radius_blue"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="5dp"
+                android:text="修改"
+                android:textColor="@color/white"
+                android:layout_marginRight="@dimen/size_10dp"
+                android:textSize="@dimen/size_16dp"
+                binding:onClickCommand="@{viewModel.ModifyOnClick}"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.youwu.tool.ui.address.LocationViewModel" />
+
+        <variable
+            name="viewModel"
+            type="LocationViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45dp"
+            android:background="@drawable/bg_white_bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/fanhui_img_30dp"
+                android:layout_height="@dimen/fanhui_img_30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:padding="@dimen/size_3dp"
+                android:src="@mipmap/fanhui"
+                binding:onClickCommand="@{viewModel.finishOnClick}"
+            />
+
+            <TextView
+                android:id="@+id/text_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="定位信息"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/size_16dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/top_layout"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_0_5dp"
+                android:background="@color/md_grey_200"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/size_15dp"
+                android:layout_marginEnd="@dimen/size_15dp"
+                >
+                <TextView
+                    android:id="@+id/tv_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/lower"
+                    android:drawablePadding="8dp"
+                    android:text="全部门店"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:lines="2"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/size_14dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/size_10dp"
+                    android:layout_marginEnd="@dimen/size_10dp"
+                    binding:onClickCommand="@{viewModel.store_onClick}"
+                    android:layout_marginRight="@dimen/size_5dp"/>
+                <View
+                    android:layout_width="@dimen/size_1dp"
+                    android:layout_height="@dimen/img_20dp"
+                    android:background="@color/md_grey_300"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/tv_cabinet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/lower"
+                    android:drawablePadding="8dp"
+                    android:text="全部柜子"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:lines="2"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/size_14dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/size_10dp"
+                    android:layout_marginEnd="@dimen/size_10dp"
+                    binding:onClickCommand="@{viewModel.cabinet_onClick}"
+                    android:layout_marginRight="@dimen/size_5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:layout_marginStart="@dimen/size_15dp"
+                android:layout_marginEnd="@dimen/size_15dp"
+                >
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radius_10dp"
+                    android:layout_marginRight="@dimen/size_5dp"
+                    android:textColorHint="@color/md_white_1000"
+                    binding:hintTextAppearance="@style/textInputLayoutHint"
+                    android:padding="@dimen/size_3dp"
+                    >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_45dp"
+                    android:background="@drawable/radius_10dp"
+                    android:hint="纬度(latitude)"
+                    android:text="@={viewModel.Latitude}"
+                    android:textColor="@color/md_white_1000"
+                    android:textColorHint="@color/md_white_1000"
+                    android:paddingLeft="@dimen/size_10dp"
+                    android:theme="@style/MyEditText"
+
+
+                    android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radius_10dp"
+                    android:layout_marginLeft="@dimen/size_5dp"
+                    android:textColorHint="@color/md_white_1000"
+                    binding:hintTextAppearance="@style/textInputLayoutHint"
+                    android:padding="@dimen/size_3dp"
+                    >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_45dp"
+                    android:background="@drawable/radius_10dp"
+                    android:hint="经度(longitude)"
+                    android:text="@={viewModel.Longitude}"
+                    android:textColor="@color/md_white_1000"
+                    android:textColorHint="@color/md_white_1000"
+                    android:paddingLeft="@dimen/size_10dp"
+                    android:theme="@style/MyEditText"
+
+                    android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radius_10dp"
+                android:textColorHint="@color/md_white_1000"
+                binding:hintTextAppearance="@style/textInputLayoutHint"
+                android:padding="@dimen/size_3dp"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:layout_marginStart="@dimen/size_15dp"
+                android:layout_marginEnd="@dimen/size_15dp"
+                >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45dp"
+                android:background="@drawable/radius_10dp"
+                android:hint="地址(address)"
+                android:text="@={viewModel.address}"
+                android:textColor="@color/md_white_1000"
+                android:textColorHint="@color/md_white_1000"
+                android:paddingLeft="@dimen/size_10dp"
+                android:theme="@style/MyEditText"
+                android:textSize="16sp"
+
+                />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radius_10dp"
+                android:textColorHint="@color/md_white_1000"
+                binding:hintTextAppearance="@style/textInputLayoutHint"
+                android:padding="@dimen/size_3dp"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:layout_marginStart="@dimen/size_15dp"
+                android:layout_marginEnd="@dimen/size_15dp"
+                >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45dp"
+                android:background="@drawable/radius_10dp"
+                android:hint="姓名"
+                android:text="@={viewModel.name}"
+                android:textColor="@color/md_white_1000"
+                android:textColorHint="@color/md_white_1000"
+                android:paddingLeft="@dimen/size_10dp"
+                android:theme="@style/MyEditText"
+                android:textSize="16sp"
+                />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:overScrollMode="never" />
+
+        </LinearLayout>
+        <com.xuexiang.xui.widget.alpha.XUIAlphaButton
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/radius_10dp"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginTop="@dimen/size_15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/size_30dp"
+            android:layout_marginStart="@dimen/size_30dp"
+            android:layout_marginEnd="@dimen/size_30dp"
+            binding:onClickCommand="@{viewModel.SubmitOnClick}"
+            />
+    </RelativeLayout>
+</layout>

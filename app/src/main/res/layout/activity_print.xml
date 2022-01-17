@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout >
+
+    <data>
+
+        <import type="com.youwu.tool.ui.print.PrintViewModel" />
+        <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LayoutManagers" />
+
+        <import type="me.goldze.mvvmhabit.binding.viewadapter.recyclerview.LineManagers" />
+        <variable
+            name="viewModel"
+            type="PrintViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:binding="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/md_grey_200">
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45dp"
+            android:background="@drawable/bg_white_bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/fanhui_img_30dp"
+                android:layout_height="@dimen/fanhui_img_30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:padding="@dimen/size_3dp"
+                android:src="@mipmap/fanhui"
+                binding:onClickCommand="@{viewModel.finishOnClick}"
+            />
+
+            <TextView
+                android:id="@+id/text_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="打印小票"
+                android:textColor="@color/md_black_1000"
+                android:textSize="@dimen/size_16dp" />
+
+            <ImageView
+                android:id="@+id/iv_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/size_10dp"
+                android:src="@mipmap/ic_refresh"
+                binding:onClickCommand="@{viewModel.RefreshOnClick}"
+                />
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/lay_connectdevice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_below="@id/top_layout"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_uncon_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/connected_device"
+                android:textColor="#333333"
+                android:textSize="17sp" />
+
+
+            <RelativeLayout
+                android:id="@+id/rl_connectdevicename"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="fdafdas;"
+                    android:textColor="#333333"
+                    android:textSize="17sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_otherconnectdevice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lay_connectdevice"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/connected_otherdevice"
+                android:textColor="#333333"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/lay_otherconnectdevice"
+            android:layout_above="@id/btn_senddata"
+            binding:itemBinding="@{viewModel.itemBinding}"
+            binding:items="@{viewModel.observableList}"
+            binding:layoutManager="@{LayoutManagers.linear()}"
+            binding:lineManager="@{LineManagers.horizontal()}"
+            />
+
+        <TextView
+            android:id="@+id/tv_none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lay_otherconnectdevice"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/scan_device_none"
+            android:textColor="#888888"
+            android:textSize="13sp" />
+        <Button
+            android:id="@+id/btn_senddata"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="100dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/bg_setting_normal"
+            android:text="@string/senddata"
+            android:textColor="#FEFEFE"
+            android:textSize="18sp"
+            binding:onClickCommand="@{viewModel.sendOutOnClick}"
+            />
+
+        <Button
+            android:id="@+id/btn_disconnet"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/bg_setting_normal"
+            android:text="@string/disconnectdevice"
+            android:textColor="#FEFEFE"
+            android:textSize="18sp"
+            binding:onClickCommand="@{viewModel.breakOffOnClick}"/>
+
+
+    </RelativeLayout>
+</layout>
