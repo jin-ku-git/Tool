@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 //    @Override
 //    public void initParam() {
 //        super.initParam();
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//
 //    }
 
     @Override

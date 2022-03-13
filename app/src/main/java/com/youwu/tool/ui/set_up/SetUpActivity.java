@@ -36,7 +36,7 @@ public class SetUpActivity extends BaseActivity<ActivityDemoBinding, SetUpViewMo
     @Override
     public void initParam() {
         super.initParam();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     }
 
     @Override

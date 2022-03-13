@@ -202,7 +202,7 @@ public class PrintActivity extends BaseActivity<ActivityPrintBinding, PrintViewM
     @Override
     public void initParam() {
         super.initParam();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     }
 
     @Override

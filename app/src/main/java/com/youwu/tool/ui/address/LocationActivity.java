@@ -83,7 +83,7 @@ public class LocationActivity extends BaseActivity<ActivityLocationBinding, Loca
     @Override
     public void initParam() {
         super.initParam();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     }
 
     @Override

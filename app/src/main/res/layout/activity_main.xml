@@ -62,7 +62,8 @@
                     android:layout_alignParentBottom="true"
                     android:orientation="horizontal"
                     android:paddingBottom="2dp"
-                    android:paddingTop="2dp">
+                    android:paddingTop="2dp"
+                    android:visibility="gone">
 
                     <RelativeLayout
                         android:layout_width="match_parent"

@@ -102,7 +102,7 @@ public class AddUpdateCabinetActivity extends BaseActivity<ActivityAddUpdateCabi
     @Override
     public void initParam() {
         super.initParam();
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//
     }
 
     @Override
@@ -164,10 +164,17 @@ public class AddUpdateCabinetActivity extends BaseActivity<ActivityAddUpdateCabi
                     case 2://修改信息成功
                         RxToast.success("修改成功!");
 
-                        right.get(position).t.setAddress(bean.address);;
-                        right.get(position).t.setLongitude(bean.longitude);;
-                        right.get(position).t.setLatitude(bean.Latitude);;
-                        right.get(position).t.setName(bean.name);;
+                        right.get(position).t.setAddress(bean.address);
+                        right.get(position).t.setLongitude(bean.longitude);
+                        right.get(position).t.setLatitude(bean.Latitude);
+                        right.get(position).t.setName(bean.name);
+                        right.get(position).t.getWith_table().get(0).setTopic(bean.number);
+
+
+                        String submitJson = new Gson().toJson(right.get(position).t);
+
+                        KLog.d("修改的数据：\r\n"+submitJson);
+
                         rightAdapter.notifyItemChanged(position);
                         break;
                     case 3:
@@ -310,6 +317,7 @@ public class AddUpdateCabinetActivity extends BaseActivity<ActivityAddUpdateCabi
         //获取权限
         requestDynamicPermisson();
 
+
     }
 
     /**
@@ -385,8 +393,15 @@ public class AddUpdateCabinetActivity extends BaseActivity<ActivityAddUpdateCabi
     //初始化右边
     private void initRight() {
 
+        /**
+         * true:平板,false:手机
+         */
+        if (isPad(getBaseContext())){
+            rightManager = new GridLayoutManager(mContext, 2);
+        }else {
+            rightManager = new GridLayoutManager(mContext, 1);
+        }
 
-        rightManager = new GridLayoutManager(mContext, 1);
 
         if (rightAdapter == null) {
             rightAdapter = new ScrollRightAdapter(R.layout.scroll_right, R.layout.layout_right_title, null);
@@ -660,6 +675,7 @@ public class AddUpdateCabinetActivity extends BaseActivity<ActivityAddUpdateCabi
     private void initTencentLocationRequest() {
 
         TencentLocationManager locationManager = TencentLocationManager.getInstance(this);
+        locationManager.setCoordinateType(TencentLocationManager.COORDINATE_TYPE_WGS84);
         TencentLocationListener mLocationListener=new TencentLocationListener() {
             @Override
             public void onLocationChanged(TencentLocation tencentLocation, int i, String s) {

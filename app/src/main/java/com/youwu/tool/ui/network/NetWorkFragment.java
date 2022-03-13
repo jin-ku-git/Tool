@@ -31,7 +31,7 @@ public class NetWorkFragment extends BaseFragment<FragmentNetworkBinding, NetWor
     @Override
     public void initParam() {
         super.initParam();
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     }
 
     @Override

@@ -48,7 +48,7 @@ public class ChartActivity extends BaseActivity<ActivityChartBinding, ChartViewM
     @Override
     public void initParam() {
         super.initParam();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
     }
 
     @Override

@@ -182,6 +182,8 @@ dependencies {
     api 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
+    implementation 'leavesc.hello:Monitor:1.0.1'
+
 }
 def releaseTime() {
     return new Date().format("yyyy-MM-dd")
